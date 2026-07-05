@@ -18,35 +18,35 @@
   "exports": {
     ".": {
       "types": "./src/mod.ts",
-      "default": "./src/mod.ts"
+      "default": "./src/mod.js"
     },
     "./vite": {
       "types": "./src/vite.ts",
-      "default": "./src/vite.ts"
+      "default": "./src/vite.js"
     },
     "./editor": {
       "types": "./src/editor.ts",
-      "default": "./src/editor.ts"
+      "default": "./src/editor.js"
     },
     "./generator": {
       "types": "./src/generator.ts",
-      "default": "./src/generator.ts"
+      "default": "./src/generator.js"
     },
     "./html-data": {
       "types": "./src/html-data-renderer.ts",
-      "default": "./src/html-data-renderer.ts"
+      "default": "./src/html-data-renderer.js"
     },
     "./manifest": {
       "types": "./src/manifest.ts",
-      "default": "./src/manifest.ts"
+      "default": "./src/manifest.js"
     },
     "./scanner": {
       "types": "./src/route-scanner.ts",
-      "default": "./src/route-scanner.ts"
+      "default": "./src/route-scanner.js"
     },
     "./type-renderer": {
       "types": "./src/type-renderer.ts",
-      "default": "./src/type-renderer.ts"
+      "default": "./src/type-renderer.js"
     }
   },
   "scripts": {

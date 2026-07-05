@@ -23,7 +23,8 @@
   },
   "nodeModulesDir": "auto",
   "tasks": {
-    "check": "deno check src/mod.ts src/vite.ts src/editor.ts src/generator.ts src/html-data-renderer.ts src/route-scanner.ts src/type-renderer.ts",
+    "build": "deno run -A scripts/build-js-mirrors.ts",
+    "check": "deno check src/mod.ts src/vite.ts src/editor.ts src/generator.ts src/html-data-renderer.ts src/route-scanner.ts src/type-renderer.ts src/manifest.js src/mod.js src/vite.js src/editor.js src/generator.js src/html-data-renderer.js src/route-scanner.js src/type-renderer.js",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test -A .tests/"
