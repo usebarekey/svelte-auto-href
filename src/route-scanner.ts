@@ -181,6 +181,7 @@ function get_route_kind(files: readonly string[]): RouteKind | undefined {
 
 function is_page_file(file: string): boolean {
   return file === "+page.svelte" ||
+    file === "+page.sv" ||
     /^\+page(?:\.server)?\.(?:js|ts)$/.test(file);
 }
 

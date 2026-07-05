@@ -43,6 +43,11 @@ Deno.test("scan_routes discovers SvelteKit pages, endpoints, params, groups, and
     "+page.svelte",
     "",
   );
+  await write_route_file(
+    join(routes_dir, "sv-dashboard"),
+    "+page.sv",
+    "",
+  );
 
   const manifest = await scan_routes({ routes_dir });
   const auth_route = manifest.routes.find((route) =>
@@ -60,12 +65,16 @@ Deno.test("scan_routes discovers SvelteKit pages, endpoints, params, groups, and
   const fruit_route = manifest.routes.find((route) =>
     route.id === "/fruits/[page=fruit]"
   );
+  const sv_route = manifest.routes.find((route) =>
+    route.id === "/sv-dashboard"
+  );
 
   assert(auth_route);
   assert(blog_route);
   assert(docs_route);
   assert(files_route);
   assert(fruit_route);
+  assert(sv_route);
 
   assertEquals(auth_route.completions, ["/auth/sign-in"]);
   assertEquals(blog_route.templates, ["/blog/${string}"]);
@@ -78,6 +87,7 @@ Deno.test("scan_routes discovers SvelteKit pages, endpoints, params, groups, and
   ]);
   assertEquals(files_route.route_kind, "endpoint");
   assertEquals(fruit_route.params[0]?.matcher, "fruit");
+  assertEquals(sv_route.completions, ["/sv-dashboard"]);
 });
 
 async function write_route_file(
