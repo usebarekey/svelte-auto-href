@@ -4,7 +4,12 @@
   "exports": {
     ".": "./src/mod.ts",
     "./vite": "./src/vite.ts",
-    "./editor": "./src/editor.ts"
+    "./editor": "./src/editor.ts",
+    "./generator": "./src/generator.ts",
+    "./html-data": "./src/html-data-renderer.ts",
+    "./manifest": "./src/manifest.ts",
+    "./scanner": "./src/route-scanner.ts",
+    "./type-renderer": "./src/type-renderer.ts"
   },
   "compilerOptions": {
     "lib": ["deno.ns", "dom", "dom.iterable", "es2022"]
@@ -18,7 +23,7 @@
   },
   "nodeModulesDir": "auto",
   "tasks": {
-    "check": "deno check src/mod.ts src/vite.ts src/editor.ts",
+    "check": "deno check src/mod.ts src/vite.ts src/editor.ts src/generator.ts src/html-data-renderer.ts src/route-scanner.ts src/type-renderer.ts",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test -A .tests/"

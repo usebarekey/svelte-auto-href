@@ -30,14 +30,14 @@ export type StrictAppHref = string;
  *
  * @example
  * ```ts
- * const destination = href("/auth/sign-in");
+ * const destination = literal_href("/auth/sign-in");
  * ```
  *
  * @since 0.1.0
  * @param value - Href string to return unchanged.
  * @returns The same href value.
  */
-export function href<T extends string>(value: T): T {
+export function literal_href<T extends string>(value: T): T {
   return value;
 }
 
@@ -64,11 +64,24 @@ export type {
   RouteParam,
   RouteRecord,
 } from "./manifest.ts";
+export type { AutoHrefOptions } from "./vite.ts";
+export { href } from "./vite.ts";
+export type {
+  AutoHrefCompletion,
+  AutoHrefCompletionOptions,
+  AutoHrefDiagnostic,
+} from "./editor.ts";
+export {
+  diagnose_href,
+  get_href_completions,
+  is_known_app_href,
+} from "./editor.ts";
 export type {
   GenerateAutoHrefOptions,
   GenerateAutoHrefResult,
 } from "./generator.ts";
 export { generate_auto_href } from "./generator.ts";
+export { render_types } from "./type-renderer.ts";
 export { render_html_data } from "./html-data-renderer.ts";
 export type { ScanRoutesOptions } from "./route-scanner.ts";
-export { scan_routes } from "./route-scanner.ts";
+export { route_segments_from_path, scan_routes } from "./route-scanner.ts";

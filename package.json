@@ -27,6 +27,26 @@
     "./editor": {
       "types": "./src/editor.ts",
       "default": "./src/editor.ts"
+    },
+    "./generator": {
+      "types": "./src/generator.ts",
+      "default": "./src/generator.ts"
+    },
+    "./html-data": {
+      "types": "./src/html-data-renderer.ts",
+      "default": "./src/html-data-renderer.ts"
+    },
+    "./manifest": {
+      "types": "./src/manifest.ts",
+      "default": "./src/manifest.ts"
+    },
+    "./scanner": {
+      "types": "./src/route-scanner.ts",
+      "default": "./src/route-scanner.ts"
+    },
+    "./type-renderer": {
+      "types": "./src/type-renderer.ts",
+      "default": "./src/type-renderer.ts"
     }
   },
   "scripts": {

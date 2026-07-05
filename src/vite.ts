@@ -7,7 +7,7 @@ import type { Plugin, ResolvedConfig, ViteDevServer } from "vite";
  *
  * @example
  * ```ts
- * auto_href({
+ * href({
  *   routes_dir: "src/routes",
  * });
  * ```
@@ -32,10 +32,10 @@ export interface AutoHrefOptions {
  * ```ts
  * import { sveltekit } from "@sveltejs/kit/vite";
  * import { defineConfig } from "vite";
- * import { auto_href } from "svelte-auto-href/vite";
+ * import { href } from "svelte-auto-href/vite";
  *
  * export default defineConfig({
- *   plugins: [auto_href(), sveltekit()],
+ *   plugins: [href(), sveltekit()],
  * });
  * ```
  *
@@ -43,7 +43,7 @@ export interface AutoHrefOptions {
  * @param options - Optional route and output directory settings.
  * @returns A Vite plugin.
  */
-export function auto_href(options: AutoHrefOptions = {}): Plugin {
+export function href(options: AutoHrefOptions = {}): Plugin {
   let resolved_config: ResolvedConfig | undefined;
 
   const generate = async () => {

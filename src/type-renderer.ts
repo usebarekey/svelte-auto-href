@@ -59,7 +59,7 @@ export function render_types(manifest: AutoHrefManifest): string {
     "}",
     "",
     'declare module "svelte-auto-href" {',
-    "  export function href<T extends GeneratedAutoHref>(value: T): T;",
+    "  export function literal_href<T extends GeneratedAutoHref>(value: T): T;",
     "  export function strict_href<T extends GeneratedStrictAppHref>(value: T): T;",
     "}",
     "",

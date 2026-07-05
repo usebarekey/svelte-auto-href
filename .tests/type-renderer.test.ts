@@ -1,4 +1,4 @@
-import { assertStringIncludes } from "@std/assert";
+import { assertFalse, assertStringIncludes } from "@std/assert";
 import { render_types } from "../src/type-renderer.ts";
 import type { AutoHrefManifest } from "../src/manifest.ts";
 
@@ -35,4 +35,11 @@ Deno.test("render_types preserves autocomplete literals while allowing loose str
   assertStringIncludes(code, 'declare module "$app/navigation"');
   assertStringIncludes(code, 'declare module "@sveltejs/kit"');
   assertStringIncludes(code, 'declare module "svelte-auto-href/generated"');
+  assertStringIncludes(
+    code,
+    "export function literal_href<T extends GeneratedAutoHref>(value: T): T;",
+  );
+  assertFalse(
+    code.includes("export function href<T extends GeneratedAutoHref>"),
+  );
 });
