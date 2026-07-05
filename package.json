@@ -15,6 +15,9 @@
     "src",
     "README.md"
   ],
+  "bin": {
+    "svelte-auto-href": "./src/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./src/mod.ts",
@@ -35,6 +38,14 @@
     "./html-data": {
       "types": "./src/html-data-renderer.ts",
       "default": "./src/html-data-renderer.js"
+    },
+    "./init": {
+      "types": "./src/init.ts",
+      "default": "./src/init.js"
+    },
+    "./cli": {
+      "types": "./src/cli.ts",
+      "default": "./src/cli.js"
     },
     "./manifest": {
       "types": "./src/manifest.ts",
@@ -59,6 +70,9 @@
     "@sveltejs/kit": "^2.0.0 || ^3.0.0-next.0",
     "svelte": "^5.0.0",
     "vite": "^7.0.0 || ^8.0.0"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
   },
   "devDependencies": {
     "typescript": "^6.0.0",

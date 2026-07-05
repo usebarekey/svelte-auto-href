@@ -7,6 +7,8 @@
     "./editor": "./src/editor.ts",
     "./generator": "./src/generator.ts",
     "./html-data": "./src/html-data-renderer.ts",
+    "./init": "./src/init.ts",
+    "./cli": "./src/cli.ts",
     "./manifest": "./src/manifest.ts",
     "./scanner": "./src/route-scanner.ts",
     "./type-renderer": "./src/type-renderer.ts"
@@ -18,13 +20,14 @@
     "@std/assert": "jsr:@std/assert@^1.0.15",
     "@std/fs": "jsr:@std/fs@^1.0.19",
     "@std/path": "jsr:@std/path@^1.1.2",
+    "jsonc-parser": "npm:jsonc-parser@^3.3.1",
     "typescript": "npm:typescript@^6.0.0",
     "vite": "npm:vite@^8.0.0"
   },
   "nodeModulesDir": "auto",
   "tasks": {
     "build": "deno run -A scripts/build-js-mirrors.ts",
-    "check": "deno check src/mod.ts src/vite.ts src/editor.ts src/generator.ts src/html-data-renderer.ts src/route-scanner.ts src/type-renderer.ts src/manifest.js src/mod.js src/vite.js src/editor.js src/generator.js src/html-data-renderer.js src/route-scanner.js src/type-renderer.js",
+    "check": "deno check src/mod.ts src/vite.ts src/editor.ts src/generator.ts src/html-data-renderer.ts src/route-scanner.ts src/type-renderer.ts src/init.ts src/cli.ts src/manifest.js src/mod.js src/vite.js src/editor.js src/generator.js src/html-data-renderer.js src/route-scanner.js src/type-renderer.js src/init.js src/cli.js",
     "fmt": "deno fmt",
     "lint": "deno lint",
     "test": "deno test -A .tests/"

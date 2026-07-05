@@ -3,9 +3,11 @@ import { join } from "node:path";
 import ts from "typescript";
 
 const source_files = [
+  "cli",
   "editor",
   "generator",
   "html-data-renderer",
+  "init",
   "manifest",
   "mod",
   "route-scanner",

@@ -37,6 +37,22 @@ The plugin is also available from its area export:
 import { href } from "svelte-auto-href/vite";
 ```
 
+Enable native attribute completions in VS Code-family editors:
+
+```sh
+npx svelte-auto-href init
+```
+
+That writes `.vscode/settings.json` for the current project. To apply the same
+setting globally, pass `--global` and choose the editor:
+
+```sh
+npx svelte-auto-href init --global --editor cursor
+```
+
+Supported editors are `vscode`, `vscode-insiders`, `cursor`, `vscodium`, and
+`windsurf` on macOS, Windows, and Linux.
+
 ### With `svelte-plugin-composer`
 
 When using `svelte-plugin-composer`, keep `href()` before `kit(...)`:
@@ -181,14 +197,27 @@ Diagnostics ignore non-internal strings such as `https://`, `mailto:`, hash-only
 links, and protocol-relative URLs.
 
 The generated `.svelte-kit/svelte-auto-href/html-data.json` follows the VS Code
-HTML custom-data format used by Svelte tooling. Point an editor's Svelte HTML
-custom data setting at that file to get native attribute completions for:
+HTML custom-data format used by Svelte tooling. The init command points
+`html.customData` at that file so native attribute completions work for:
 
 - `<a href>`
 - `<area href>`
 - `<form action>`
 - `<button formaction>`
 - `<input formaction>`
+
+It writes this workspace setting by default:
+
+```json
+{
+  "html.customData": [
+    ".svelte-kit/svelte-auto-href/html-data.json"
+  ]
+}
+```
+
+Use `svelte-auto-href init --global --editor vscode` if you want the setting in
+your editor user settings instead of each project.
 
 ## Options
 
