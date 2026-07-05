@@ -26,16 +26,18 @@ export default defineConfig({
 
 The plugin writes:
 
-- `.svelte-auto-href/manifest.json`
-- `.svelte-auto-href/types.d.ts`
-- `.svelte-auto-href/html-data.json`
+- `.svelte-kit/svelte-auto-href/manifest.json`
+- `.svelte-kit/types/svelte-auto-href/$types.d.ts`
+- `.svelte-kit/svelte-auto-href/html-data.json`
 
 Include the generated declarations in your app `tsconfig.json` if your editor
-does not pick them up automatically:
+does not pick them up automatically. By default the declaration file is placed
+under `.svelte-kit/types/**/$types.d.ts`, matching SvelteKit's generated type
+include pattern:
 
 ```json
 {
-  "include": [".svelte-auto-href/types.d.ts", "src/**/*"]
+  "extends": "./.svelte-kit/tsconfig.json"
 }
 ```
 
@@ -86,9 +88,9 @@ const diagnostic = diagnose_href(manifest, "/auth/sing-in");
 It intentionally ignores non-internal strings such as `https://`, `mailto:`,
 hash-only links, and protocol-relative URLs.
 
-The generated `html-data.json` follows the VS Code HTML custom-data shape used
-by Svelte tooling. Point your editor's Svelte HTML custom data setting at it to
-get native attribute completions for:
+The generated `.svelte-kit/svelte-auto-href/html-data.json` follows the VS Code
+HTML custom-data shape used by Svelte tooling. Point your editor's Svelte HTML
+custom data setting at it to get native attribute completions for:
 
 - `<a href>`
 - `<area href>`

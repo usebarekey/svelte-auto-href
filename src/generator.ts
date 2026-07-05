@@ -1,5 +1,5 @@
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
 import { render_html_data } from "./html-data-renderer.ts";
 import { scan_routes } from "./route-scanner.ts";
 import { render_types } from "./type-renderer.ts";
@@ -24,8 +24,11 @@ export interface GenerateAutoHrefOptions {
   /** Route directory relative to `root`, or absolute. Defaults to `src/routes`. */
   routes_dir?: string;
 
-  /** Output directory relative to `root`, or absolute. Defaults to `.svelte-auto-href`. */
+  /** Manifest/data output directory relative to `root`, or absolute. Defaults to `.svelte-kit/svelte-auto-href`. */
   output_dir?: string;
+
+  /** Declaration file path relative to `root`, or absolute. Defaults to `.svelte-kit/types/svelte-auto-href/$types.d.ts`. */
+  types_path?: string;
 }
 
 /**
@@ -47,7 +50,7 @@ export interface GenerateAutoHrefResult {
   /** Path to `manifest.json`. */
   manifest_path: string;
 
-  /** Path to `types.d.ts`. */
+  /** Path to the generated declaration file. */
   types_path: string;
 
   /** Path to `html-data.json`. */
@@ -55,8 +58,7 @@ export interface GenerateAutoHrefResult {
 }
 
 /**
- * Generates `.svelte-auto-href/manifest.json` and `types.d.ts` for a SvelteKit
- * project.
+ * Generates SvelteKit-owned output under `.svelte-kit` for a project.
  *
  * @example
  * ```ts
@@ -79,18 +81,22 @@ export async function generate_auto_href(
 
   const output_dir = resolve_project_path(
     options.root,
-    options.output_dir ?? ".svelte-auto-href",
+    options.output_dir ?? ".svelte-kit/svelte-auto-href",
   );
 
   const manifest_path = join(output_dir, "manifest.json");
-  const types_path = join(output_dir, "types.d.ts");
   const html_data_path = join(output_dir, "html-data.json");
+  const types_path = resolve_project_path(
+    options.root,
+    options.types_path ?? ".svelte-kit/types/svelte-auto-href/$types.d.ts",
+  );
   const routes_exist = await path_exists(routes_dir);
   const manifest = routes_exist
     ? await scan_routes({ routes_dir })
     : make_empty_manifest(routes_dir);
 
   await mkdir(output_dir, { recursive: true });
+  await mkdir(dirname(types_path), { recursive: true });
   await write_if_changed(
     manifest_path,
     `${JSON.stringify(manifest, null, 2)}\n`,

@@ -18,8 +18,11 @@ export interface AutoHrefOptions {
   /** Route directory relative to the Vite root. Defaults to `src/routes`. */
   routes_dir?: string;
 
-  /** Generated output directory relative to the Vite root. Defaults to `.svelte-auto-href`. */
+  /** Manifest/data output directory relative to the Vite root. Defaults to `.svelte-kit/svelte-auto-href`. */
   output_dir?: string;
+
+  /** Declaration file path relative to the Vite root. Defaults to `.svelte-kit/types/svelte-auto-href/$types.d.ts`. */
+  types_path?: string;
 }
 
 /**
@@ -52,6 +55,7 @@ export function auto_href(options: AutoHrefOptions = {}): Plugin {
       root: resolved_config.root,
       routes_dir: options.routes_dir,
       output_dir: options.output_dir,
+      types_path: options.types_path,
     });
   };
 

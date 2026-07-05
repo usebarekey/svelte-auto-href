@@ -39,7 +39,7 @@ export interface RouteParam {
 }
 
 /**
- * A route record written to `.svelte-auto-href/manifest.json`.
+ * A route record written to the generated manifest.
  *
  * @example
  * ```ts

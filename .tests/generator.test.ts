@@ -1,4 +1,4 @@
-import { assert, assertStringIncludes } from "@std/assert";
+import { assert, assertEquals, assertStringIncludes } from "@std/assert";
 import { join } from "node:path";
 import { generate_auto_href } from "../src/generator.ts";
 
@@ -18,6 +18,14 @@ Deno.test("generate_auto_href writes manifest and declaration files", async () =
   const html_data_text = await Deno.readTextFile(result.html_data_path);
 
   assert(result.manifest.routes.some((route) => route.id === "/auth/sign-in"));
+  assertEquals(
+    result.manifest_path,
+    join(root, ".svelte-kit", "svelte-auto-href", "manifest.json"),
+  );
+  assertEquals(
+    result.types_path,
+    join(root, ".svelte-kit", "types", "svelte-auto-href", "$types.d.ts"),
+  );
   assertStringIncludes(manifest_text, "/auth/sign-in");
   assertStringIncludes(types_text, "GeneratedAutoHref");
   assertStringIncludes(html_data_text, '"href"');
