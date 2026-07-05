@@ -37,6 +37,24 @@ The plugin is also available from its area export:
 import { href } from "svelte-auto-href/vite";
 ```
 
+### With `svelte-plugin-composer`
+
+When using `svelte-plugin-composer`, keep `href()` before `kit(...)`:
+
+```ts
+import adapter from "@sveltejs/adapter-auto";
+import { href } from "svelte-auto-href";
+import { compose, kit } from "svelte-plugin-composer";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: compose([
+    href(),
+    kit({ adapter: adapter() }),
+  ]),
+});
+```
+
 By default the plugin writes:
 
 - `.svelte-kit/svelte-auto-href/manifest.json`
@@ -81,6 +99,10 @@ SvelteKit remains the canonical source for route IDs, params, matchers, and
 pathname patterns. `svelte-auto-href` adds manifest data, editor completions,
 HTML custom data, and concrete literal suggestions for `entries()` values that
 can be read without executing application code.
+
+The scanner follows the route files SvelteKit can see. In a project that enables
+`.sv` components with `svelte-sv-extension`, routes such as `+page.sv`,
+`+layout.sv`, and `+error.sv` are included too.
 
 ## Dynamic Routes And Entries
 
@@ -139,7 +161,9 @@ import { scan_routes } from "svelte-auto-href/scanner";
 
 Most apps only need `href()` in `vite.config.ts`. `literal_href()` is an
 identity helper for TypeScript call sites where an explicit function reads
-better than a local cast.
+better than a local cast. App components usually do not need any import from
+this package because the generated declarations augment SvelteKit's own
+navigation and redirect APIs.
 
 ## Editor Integrations
 
