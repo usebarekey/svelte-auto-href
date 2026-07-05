@@ -1,21 +1,15 @@
 # svelte-auto-href
 
-Route-aware autocomplete data for SvelteKit hrefs.
+Autocomplete for SvelteKit links.
 
-`svelte-auto-href` scans a SvelteKit route tree and writes generated metadata
-under `.svelte-kit`. Editors and language-server integrations can use that
-metadata to suggest app routes in href-like strings such as `<a href>`,
-`goto(...)`, and `redirect(...)`, while TypeScript still accepts arbitrary
-strings for external URLs, CMS paths, hash links, and generated slugs.
+`svelte-auto-href` gives your editor route suggestions in the places where you
+write URLs: links, form actions, `goto(...)`, `redirect(...)`, and similar
+calls. Add the Vite plugin, and it keeps a small generated snapshot of your
+routes in `.svelte-kit` as your app changes.
 
-The generated loose type follows the same editor-friendly shape SvelteKit uses
-for `$app/types.Pathname`:
-
-```ts
-type AutoHref = KnownHref | (string & {});
-```
-
-Known routes stay visible in IntelliSense. Any string remains assignable.
+It is intentionally flexible. You get suggestions for app routes like
+`/auth/sign-in`, but external URLs, anchors, CMS paths, and generated slugs
+still work like normal strings.
 
 ## Install
 
