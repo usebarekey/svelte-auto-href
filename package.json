@@ -5,7 +5,7 @@
 	"license": "BSD-3-Clause",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sandersonstabo/svelte-auto-href.git"
+		"url": "git+https://github.com/usebarekey/svelte-auto-href.git"
 	},
 	"bin": {
 		"svelte-auto-href": "./.dist/cli.mjs"
