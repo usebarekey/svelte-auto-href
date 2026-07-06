@@ -14,7 +14,7 @@ still work like normal strings.
 ## Install
 
 ```sh
-npm install -D svelte-auto-href
+pnpm add -D svelte-auto-href
 ```
 
 ## Setup
@@ -27,7 +27,7 @@ import { defineConfig } from "vite";
 import { href } from "svelte-auto-href";
 
 export default defineConfig({
-  plugins: [href(), sveltekit()],
+	plugins: [href(), sveltekit()],
 });
 ```
 
@@ -40,14 +40,14 @@ import { href } from "svelte-auto-href/vite";
 Enable native attribute completions in VS Code-family editors:
 
 ```sh
-npx svelte-auto-href init
+pnpm exec svelte-auto-href init
 ```
 
 That writes `.vscode/settings.json` for the current project. To apply the same
 setting globally, pass `--global` and choose the editor:
 
 ```sh
-npx svelte-auto-href init --global --editor cursor
+pnpm exec svelte-auto-href init --global --editor cursor
 ```
 
 Supported editors are `vscode`, `vscode-insiders`, `cursor`, `vscodium`, and
@@ -64,10 +64,7 @@ import { compose, kit } from "svelte-plugin-composer";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  plugins: compose([
-    href(),
-    kit({ adapter: adapter() }),
-  ]),
+	plugins: compose([href(), kit({ adapter: adapter() })]),
 });
 ```
 
@@ -83,7 +80,7 @@ type include.
 
 ```json
 {
-  "extends": "./.svelte-kit/tsconfig.json"
+	"extends": "./.svelte-kit/tsconfig.json"
 }
 ```
 
@@ -132,10 +129,7 @@ If a route exports literal `entries()`, those concrete paths are added as
 specific suggestions:
 
 ```ts
-export const entries = () => [
-  { slug: "hello-world" },
-  { slug: "release-notes" },
-];
+export const entries = () => [{ slug: "hello-world" }, { slug: "release-notes" }];
 ```
 
 That route can suggest:
@@ -155,14 +149,14 @@ Everything public is available from the package root:
 
 ```ts
 import {
-  diagnose_href,
-  generate_auto_href,
-  get_href_completions,
-  href,
-  literal_href,
-  render_html_data,
-  scan_routes,
-  strict_href,
+	diagnose_href,
+	generate_auto_href,
+	get_href_completions,
+	href,
+	literal_href,
+	render_html_data,
+	scan_routes,
+	strict_href,
 } from "svelte-auto-href";
 ```
 
@@ -210,9 +204,7 @@ It writes this workspace setting by default:
 
 ```json
 {
-  "html.customData": [
-    ".svelte-kit/svelte-auto-href/html-data.json"
-  ]
+	"html.customData": [".svelte-kit/svelte-auto-href/html-data.json"]
 }
 ```
 
@@ -227,14 +219,14 @@ import { defineConfig } from "vite";
 import { href } from "svelte-auto-href";
 
 export default defineConfig({
-  plugins: [
-    href({
-      routes_dir: "src/routes",
-      output_dir: ".svelte-kit/svelte-auto-href",
-      types_path: ".svelte-kit/types/svelte-auto-href/$types.d.ts",
-    }),
-    sveltekit(),
-  ],
+	plugins: [
+		href({
+			routes_dir: "src/routes",
+			output_dir: ".svelte-kit/svelte-auto-href",
+			types_path: ".svelte-kit/types/svelte-auto-href/$types.d.ts",
+		}),
+		sveltekit(),
+	],
 });
 ```
 

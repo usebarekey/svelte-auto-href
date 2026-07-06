@@ -1,28 +1,28 @@
-import { assertEquals } from "@std/assert";
+import { expect, test } from "vitest";
 import {
-  diagnose_href,
-  generate_auto_href,
-  get_href_completions,
-  href,
-  literal_href,
-  render_html_data,
-  render_types,
-  route_segments_from_path,
-  scan_routes,
-  strict_href,
-} from "../src/mod.ts";
+	diagnose_href,
+	generate_auto_href,
+	get_href_completions,
+	href,
+	literal_href,
+	render_html_data,
+	render_types,
+	route_segments_from_path,
+	scan_routes,
+	strict_href,
+} from "../src/mod";
 
-Deno.test("root export exposes plugin and public helpers", () => {
-  const plugin = href();
+test("root export exposes plugin and public helpers", () => {
+	const plugin = href();
 
-  assertEquals(plugin.name, "svelte-auto-href");
-  assertEquals(literal_href("/auth/sign-in"), "/auth/sign-in");
-  assertEquals(strict_href("/auth/sign-in"), "/auth/sign-in");
-  assertEquals(typeof diagnose_href, "function");
-  assertEquals(typeof generate_auto_href, "function");
-  assertEquals(typeof get_href_completions, "function");
-  assertEquals(typeof render_html_data, "function");
-  assertEquals(typeof render_types, "function");
-  assertEquals(typeof route_segments_from_path, "function");
-  assertEquals(typeof scan_routes, "function");
+	expect(plugin.name).toBe("svelte-auto-href");
+	expect(literal_href("/auth/sign-in")).toBe("/auth/sign-in");
+	expect(strict_href("/auth/sign-in")).toBe("/auth/sign-in");
+	expect(typeof diagnose_href).toBe("function");
+	expect(typeof generate_auto_href).toBe("function");
+	expect(typeof get_href_completions).toBe("function");
+	expect(typeof render_html_data).toBe("function");
+	expect(typeof render_types).toBe("function");
+	expect(typeof route_segments_from_path).toBe("function");
+	expect(typeof scan_routes).toBe("function");
 });

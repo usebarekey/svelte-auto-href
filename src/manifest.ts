@@ -25,17 +25,17 @@ export type RouteKind = "page" | "endpoint" | "page-and-endpoint";
  * @since 0.1.0
  */
 export interface RouteParam {
-  /** Parameter name as it appears in the route segment. */
-  name: string;
+	/** Parameter name as it appears in the route segment. */
+	name: string;
 
-  /** Optional matcher name from `[name=matcher]` segments. */
-  matcher?: string;
+	/** Optional matcher name from `[name=matcher]` segments. */
+	matcher?: string;
 
-  /** Whether the parameter comes from an optional `[[name]]` segment. */
-  optional: boolean;
+	/** Whether the parameter comes from an optional `[[name]]` segment. */
+	optional: boolean;
 
-  /** Whether the parameter comes from a rest `[...name]` segment. */
-  rest: boolean;
+	/** Whether the parameter comes from a rest `[...name]` segment. */
+	rest: boolean;
 }
 
 /**
@@ -57,26 +57,26 @@ export interface RouteParam {
  * @since 0.1.0
  */
 export interface RouteRecord {
-  /** SvelteKit route ID, preserving route groups. */
-  id: string;
+	/** SvelteKit route ID, preserving route groups. */
+	id: string;
 
-  /** URL-facing route pattern with route groups removed. */
-  pathname: string;
+	/** URL-facing route pattern with route groups removed. */
+	pathname: string;
 
-  /** Whether the route is backed by a page, endpoint, or both. */
-  route_kind: RouteKind;
+	/** Whether the route is backed by a page, endpoint, or both. */
+	route_kind: RouteKind;
 
-  /** Dynamic route params found in the path. */
-  params: RouteParam[];
+	/** Dynamic route params found in the path. */
+	params: RouteParam[];
 
-  /** Template-literal path shapes, such as `/blog/${string}`. */
-  templates: string[];
+	/** Template-literal path shapes, such as `/blog/${string}`. */
+	templates: string[];
 
-  /** Snippet-friendly completions, such as `/blog/${slug}`. */
-  completions: string[];
+	/** Snippet-friendly completions, such as `/blog/${slug}`. */
+	completions: string[];
 
-  /** Concrete hrefs statically extracted from literal `entries()` exports. */
-  entries: string[];
+	/** Concrete hrefs statically extracted from literal `entries()` exports. */
+	entries: string[];
 }
 
 /**
@@ -94,12 +94,12 @@ export interface RouteRecord {
  * @since 0.1.0
  */
 export interface AutoHrefManifest {
-  /** Manifest schema version. */
-  version: 1;
+	/** Manifest schema version. */
+	version: 1;
 
-  /** Route directory used for scanning. */
-  routes_dir: string;
+	/** Route directory used for scanning. */
+	routes_dir: string;
 
-  /** Routes discovered under `routes_dir`. */
-  routes: RouteRecord[];
+	/** Routes discovered under `routes_dir`. */
+	routes: RouteRecord[];
 }

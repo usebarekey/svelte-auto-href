@@ -38,7 +38,7 @@ export type StrictAppHref = string;
  * @returns The same href value.
  */
 export function literal_href<T extends string>(value: T): T {
-  return value;
+	return value;
 }
 
 /**
@@ -55,31 +55,19 @@ export function literal_href<T extends string>(value: T): T {
  * @returns The same href value.
  */
 export function strict_href<T extends string>(value: T): T {
-  return value;
+	return value;
 }
 
-export type {
-  AutoHrefManifest,
-  RouteKind,
-  RouteParam,
-  RouteRecord,
-} from "./manifest.ts";
+export type { AutoHrefManifest, RouteKind, RouteParam, RouteRecord } from "./manifest.ts";
 export type { AutoHrefOptions } from "./vite.ts";
 export { href } from "./vite.ts";
 export type {
-  AutoHrefCompletion,
-  AutoHrefCompletionOptions,
-  AutoHrefDiagnostic,
+	AutoHrefCompletion,
+	AutoHrefCompletionOptions,
+	AutoHrefDiagnostic,
 } from "./editor.ts";
-export {
-  diagnose_href,
-  get_href_completions,
-  is_known_app_href,
-} from "./editor.ts";
-export type {
-  GenerateAutoHrefOptions,
-  GenerateAutoHrefResult,
-} from "./generator.ts";
+export { diagnose_href, get_href_completions, is_known_app_href } from "./editor.ts";
+export type { GenerateAutoHrefOptions, GenerateAutoHrefResult } from "./generator.ts";
 export { generate_auto_href } from "./generator.ts";
 export { render_types } from "./type-renderer.ts";
 export { render_html_data } from "./html-data-renderer.ts";

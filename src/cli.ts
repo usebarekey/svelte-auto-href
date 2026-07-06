@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { realpathSync } from "node:fs";
 import { pathToFileURL } from "node:url";
-import process from "node:process";
 import { init_auto_href, parse_auto_href_cli_args } from "./init.ts";
+
+import process from "node:process";
 
 const help_text = `
 svelte-auto-href
@@ -19,7 +20,7 @@ Options:
 `.trim();
 
 if (is_cli_entrypoint()) {
-  await main(process.argv.slice(2));
+	await main(process.argv.slice(2));
 }
 
 /**
@@ -35,36 +36,36 @@ if (is_cli_entrypoint()) {
  * @returns A promise that resolves when the command has finished.
  */
 export async function main(args: readonly string[]): Promise<void> {
-  try {
-    const options = parse_auto_href_cli_args(args);
+	try {
+		const options = parse_auto_href_cli_args(args);
 
-    if (options.help) {
-      console.log(help_text);
-      return;
-    }
+		if (options.help) {
+			console.log(help_text);
+			return;
+		}
 
-    const result = await init_auto_href(options);
-    const verb = result.changed ? "Updated" : "Already configured";
+		const result = await init_auto_href(options);
+		const verb = result.changed ? "Updated" : "Already configured";
 
-    console.log(`${verb} ${result.settings_path}`);
-  } catch (err) {
-    const message = err instanceof Error ? err.message : String(err);
+		console.log(`${verb} ${result.settings_path}`);
+	} catch (err) {
+		const message = err instanceof Error ? err.message : String(err);
 
-    console.error(`svelte-auto-href: ${message}`);
-    process.exitCode = 1;
-  }
+		console.error(`svelte-auto-href: ${message}`);
+		process.exitCode = 1;
+	}
 }
 
 function is_cli_entrypoint(): boolean {
-  const script_path = process.argv[1];
+	const script_path = process.argv[1];
 
-  if (!script_path) {
-    return false;
-  }
+	if (!script_path) {
+		return false;
+	}
 
-  if (import.meta.url === pathToFileURL(script_path).href) {
-    return true;
-  }
+	if (import.meta.url === pathToFileURL(script_path).href) {
+		return true;
+	}
 
-  return import.meta.url === pathToFileURL(realpathSync(script_path)).href;
+	return import.meta.url === pathToFileURL(realpathSync(script_path)).href;
 }

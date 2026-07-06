@@ -1,3 +1,5 @@
 .svelte-kit/
 .tmp/
+.dist/
+dist/
 node_modules/
