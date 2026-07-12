@@ -28,8 +28,9 @@ test("render_types preserves autocomplete literals while allowing loose strings"
 	expect(code).toContain('declare module "$app/navigation"');
 	expect(code).toContain('declare module "@sveltejs/kit"');
 	expect(code).toContain('declare module "svelte-auto-href/generated"');
-	expect(code).toContain(
-		"export function literal_href<T extends GeneratedAutoHref>(value: T): T;",
-	);
+	expect(code).toContain("interface GeneratedHrefTypes {");
+	expect(code).toContain("auto_href: GeneratedAutoHref;");
+	expect(code).toContain("strict_app_href: GeneratedStrictAppHref;");
+	expect(code).not.toContain("export function strict_href<T extends GeneratedStrictAppHref>");
 	expect(code).not.toContain("export function href<T extends GeneratedAutoHref>");
 });

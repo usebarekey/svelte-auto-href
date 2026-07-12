@@ -27,3 +27,26 @@ test("render_html_data emits native href/action attribute values", () => {
 	expect(json).toContain('"name": "action"');
 	expect(json).toContain("/auth/sign-in");
 });
+
+test("render_html_data excludes dynamic pattern insertions", () => {
+	const manifest: AutoHrefManifest = {
+		version: 1,
+		routes_dir: "src/routes",
+		routes: [
+			{
+				id: "/blog/[slug]",
+				pathname: "/blog/[slug]",
+				route_kind: "page",
+				params: [{ name: "slug", optional: false, rest: false }],
+				templates: ["/blog/${string}"],
+				completions: ["/blog/${slug}"],
+				entries: ["/blog/hello-world"],
+			},
+		],
+	};
+
+	const json = render_html_data(manifest);
+
+	expect(json).toContain("/blog/hello-world");
+	expect(json).not.toContain("/blog/${slug}");
+});

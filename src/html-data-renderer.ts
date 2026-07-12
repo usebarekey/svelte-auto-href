@@ -63,5 +63,5 @@ function make_tag(name: string, attribute: string, values: { name: string }[]): 
 }
 
 function is_markup_completion(completion: AutoHrefCompletion): boolean {
-	return completion.insert_text.startsWith("/") && !completion.insert_text.includes("${string}");
+	return completion.kind !== "pattern" && completion.insert_text.startsWith("/");
 }

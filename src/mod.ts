@@ -1,6 +1,23 @@
 /**
- * Autocomplete-friendly href type. Project-specific generated types augment
- * this with known SvelteKit routes while preserving arbitrary string support.
+ * Type registry augmented by each project's generated declarations.
+ *
+ * @example
+ * ```ts
+ * declare module "svelte-auto-href" {
+ *   interface GeneratedHrefTypes {
+ *     auto_href: "/" | (string & {});
+ *     strict_app_href: "/";
+ *   }
+ * }
+ * ```
+ *
+ * @since 1.0.2
+ */
+export interface GeneratedHrefTypes {}
+
+/**
+ * Autocomplete-friendly href type resolved from the generated project types
+ * while preserving arbitrary string support.
  *
  * @example
  * ```ts
@@ -9,11 +26,14 @@
  *
  * @since 0.1.0
  */
-export type AutoHref = string & Record<never, never>;
+export type AutoHref = GeneratedHrefTypes extends {
+	auto_href: infer Href extends string;
+}
+	? Href
+	: string & Record<never, never>;
 
 /**
- * Strict app href type. Project-specific generated types augment this to the
- * app's known SvelteKit route union.
+ * Strict app href type resolved from the project's generated route union.
  *
  * @example
  * ```ts
@@ -22,7 +42,11 @@ export type AutoHref = string & Record<never, never>;
  *
  * @since 0.1.0
  */
-export type StrictAppHref = string;
+export type StrictAppHref = GeneratedHrefTypes extends {
+	strict_app_href: infer Href extends string;
+}
+	? Href
+	: string;
 
 /**
  * Identity helper that gives editors a route-aware call site once generated
@@ -37,7 +61,7 @@ export type StrictAppHref = string;
  * @param value - Href string to return unchanged.
  * @returns The same href value.
  */
-export function literal_href<T extends string>(value: T): T {
+export function literal_href<T extends AutoHref>(value: T): T {
 	return value;
 }
 
@@ -54,7 +78,7 @@ export function literal_href<T extends string>(value: T): T {
  * @param value - Strict app href to return unchanged.
  * @returns The same href value.
  */
-export function strict_href<T extends string>(value: T): T {
+export function strict_href<T extends StrictAppHref>(value: T): T {
 	return value;
 }
 

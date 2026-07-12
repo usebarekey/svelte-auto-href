@@ -1,6 +1,6 @@
 {
 	"name": "svelte-auto-href",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "Autocomplete-friendly href types and route manifests for SvelteKit apps.",
 	"license": "BSD-3-Clause",
 	"repository": {
@@ -75,7 +75,7 @@
 		"vitest": "^4.1.9"
 	},
 	"peerDependencies": {
-		"@sveltejs/kit": "^2.0.0 || ^3.0.0-next.0",
+		"@sveltejs/kit": "^2.54.0 || ^3.0.0-next.0",
 		"svelte": "^5.0.0",
 		"vite": "^7.0.0 || ^8.0.0"
 	},

@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
+		"noEmit": true,
+		"paths": {
+			"svelte-auto-href": ["../../../.dist/mod.d.mts"]
+		},
+		"skipLibCheck": true,
+		"strict": true,
+		"target": "ES2022"
+	},
+	"files": ["generated.d.ts", "index.ts"]
+}
