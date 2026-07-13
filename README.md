@@ -3,12 +3,12 @@
 <p align="center">
   <a href="https://www.npmjs.com/package/svelte-auto-href">npm</a>
   •
-  <a href="https://barekey.dev/docs/auto-href">docs</a>
+  <a href="https://docs.barekey.dev/auto-href">docs</a>
 </p>
 
 ---
 
-Write SvelteKit links with autocomplete everywhere. Seriously!
+Get route-aware suggestions wherever you write a SvelteKit URL.
 
 ```svelte
 <script lang="ts">
@@ -24,6 +24,6 @@ Write SvelteKit links with autocomplete everywhere. Seriously!
 </nav>
 ```
 
-Routes from your SvelteKit app become editor suggestions in markup, navigation helpers, redirects, and explicit href values. Dynamic URLs and external links remain ordinary strings when you need them.
+`svelte-auto-href` turns your SvelteKit route tree into suggestions for markup, navigation helpers, redirects, and explicit href values. Loose href surfaces still accept dynamic and external strings, while `strict_href()` rejects unknown app routes when you want an enforced boundary.
 
-Visit the **[docs](https://barekey.dev/docs/auto-href)** for installation, editor setup, route typing, configuration, and API reference.
+Visit the **[docs](https://docs.barekey.dev/auto-href)** for installation, editor setup, route typing, configuration, and API reference.
